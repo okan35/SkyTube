@@ -22,12 +22,17 @@ import android.content.Intent;
 
 import androidx.annotation.MenuRes;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -93,6 +98,7 @@ public class GridViewHolder extends RecyclerView.ViewHolder implements Serializa
 	View optionsButton;
 
 
+
 	/**
 	 * Constructor.
 	 *
@@ -130,7 +136,23 @@ public class GridViewHolder extends RecyclerView.ViewHolder implements Serializa
 		};
 
 		view.findViewById(R.id.channel_layout).setOnClickListener(showChannelInfo ? channelOnClickListener : null);
-
+	/*	ConstraintLayout constraintLayout = (ConstraintLayout) view.findViewById(R.id.video_cell);
+		RelativeLayout relativeLayout = (RelativeLayout) view.findViewById(R.id.channel_cell);
+		if (showChannelInfo){
+			if (constraintLayout != null && relativeLayout != null){
+				constraintLayout.setVisibility(View.GONE);
+				relativeLayout.setVisibility(View.VISIBLE);
+			} else {
+				System.out.println("null layout hide video ");
+			}
+		} else {
+			if (constraintLayout != null && relativeLayout != null){
+				constraintLayout.setVisibility(View.VISIBLE);
+				relativeLayout.setVisibility(View.GONE);
+			} else {
+				System.out.println("null layout hide channel ");
+			}
+		}*/
 		optionsButton.setOnClickListener(v -> onOptionsButtonClick(v));
 	}
 
@@ -173,8 +195,21 @@ public class GridViewHolder extends RecyclerView.ViewHolder implements Serializa
 	}
 
 	private void updateViewsData(@NonNull YouTubeChannel currentCard) {
-		viewsTextView.setText(currentCard.getTotalSubscribers());
+		/*if (showChannelInfo) {
+			//ConstraintLayout constraintLayout = (ConstraintLayout) ((MainActivity)context).findViewById(R.id.top_layout);
+			*//*ConstraintLayout.LayoutParams layoutParams  = (ConstraintLayout.LayoutParams) 	constraintLayout.getLayoutParams();
+			layoutParams.bottomMargin = 25;
+			layoutParams.topMargin = 25;
+			layoutParams.leftMargin = 25;
+			layoutParams.rightMargin = 25;
+			constraintLayout.setLayoutParams(layoutParams);*//*
 
+			titleTextView.setGravity(Gravity.CENTER_HORIZONTAL);
+			thumbnailImageView.getLayoutParams().height = 400;
+			thumbnailImageView.requestLayout();
+		}*/
+
+		viewsTextView.setText(currentCard.getTotalSubscribers());
 		thumbsUpPercentageTextView.setVisibility(View.GONE);
 		videoDurationTextView.setVisibility(View.GONE);
 		videoPositionProgressBar.setVisibility(View.GONE);

@@ -18,11 +18,15 @@
 package free.rm.skytube.gui.businessobjects.adapters;
 
 import android.content.Context;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -36,6 +40,7 @@ import free.rm.skytube.businessobjects.YouTube.POJOs.YouTubeVideo;
 import free.rm.skytube.businessobjects.YouTube.Tasks.GetYouTubeVideosTask;
 import free.rm.skytube.businessobjects.db.PlaybackStatusDb;
 import free.rm.skytube.businessobjects.interfaces.VideoPlayStatusUpdateListener;
+import free.rm.skytube.gui.activities.MainActivity;
 import free.rm.skytube.gui.businessobjects.MainActivityListener;
 
 /**
