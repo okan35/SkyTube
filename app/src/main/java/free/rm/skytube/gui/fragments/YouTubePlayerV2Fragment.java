@@ -87,6 +87,7 @@ import free.rm.skytube.gui.businessobjects.PlaybackSpeedController;
 import free.rm.skytube.gui.businessobjects.PlayerViewGestureDetector;
 import free.rm.skytube.gui.businessobjects.ResumeVideoTask;
 import free.rm.skytube.gui.businessobjects.SkyTubeMaterialDialog;
+import free.rm.skytube.gui.businessobjects.TaskRunner;
 import free.rm.skytube.gui.businessobjects.YouTubePlayer;
 import free.rm.skytube.gui.businessobjects.adapters.CommentsAdapter;
 import free.rm.skytube.gui.businessobjects.fragments.ImmersiveModeFragment;
@@ -607,7 +608,8 @@ public class YouTubePlayerV2Fragment extends ImmersiveModeFragment implements Yo
 
 		// check if the user has subscribed to a channel... if he has, then change the state of
 		// the subscribe button
-		new CheckIfUserSubbedToChannelTask(videoDescSubscribeButton, youTubeVideo.getChannelId()).execute();
+		//new CheckIfUserSubbedToChannelTask(videoDescSubscribeButton, youTubeVideo.getChannelId()).execute();
+		new TaskRunner().executeAsync(videoDescSubscribeButton,youTubeVideo.getChannelId());
 	}
 
 
