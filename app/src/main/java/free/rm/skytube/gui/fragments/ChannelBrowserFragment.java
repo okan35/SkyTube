@@ -19,12 +19,18 @@ package free.rm.skytube.gui.fragments;
 
 import android.os.Bundle;
 import com.google.android.material.tabs.TabLayout;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -82,6 +88,8 @@ public class ChannelBrowserFragment extends FragmentEx {
 	private ChannelPagerAdapter channelPagerAdapter;
 	private ViewPager viewPager;
 
+	/** Edit searched query through long press on search query**/
+	private SearchView editSearchView;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -147,6 +155,26 @@ public class ChannelBrowserFragment extends FragmentEx {
 		setSupportActionBar(toolbar);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+		//makes searched query editable on long press
+		if (editSearchView != null){
+			editSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+				@Override
+				public boolean onQueryTextSubmit(String query) {
+					System.out.println("okan");
+					return false;
+				}
+
+				@Override
+				public boolean onQueryTextChange(String newText) {
+					return false;
+				}
+			});
+		} else {
+			System.out.println("okan 2");
+		}
+
+
+
 		channelBannerImage = fragment.findViewById(R.id.channel_banner_image_view);
 		channelThumbnailImage = fragment.findViewById(R.id.channel_thumbnail_image_view);
 		channelSubscribersTextView = fragment.findViewById(R.id.channel_subs_text_view);
@@ -176,6 +204,14 @@ public class ChannelBrowserFragment extends FragmentEx {
 			initViews();
 		}
 		return fragment;
+	}
+
+	@Override
+	public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+		MenuItem searchMenuItem = menu.findItem(R.id.menu_search);
+		editSearchView = (SearchView) searchMenuItem.getActionView();
+		System.out.println("okan "  + editSearchView == null ? "null" : " not");
+		super.onCreateOptionsMenu(menu, inflater);
 	}
 
 	@Override
