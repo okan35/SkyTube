@@ -80,6 +80,7 @@ public class SearchHistoryDb extends SQLiteOpenHelperEx {
 					}
 				}
 			}
+			cursor.close();
 		}
 	}
 
