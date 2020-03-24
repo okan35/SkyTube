@@ -105,6 +105,8 @@ public class SubscriptionsDb extends SQLiteOpenHelperEx {
 		db.execSQL(SubscriptionsTable.getCreateStatement());
 		db.execSQL(SubscriptionsVideosTable.getCreateStatement());
 		db.execSQL(LocalChannelTable.getCreateStatement());
+		db.execSQL(SubscriptionsVideosTable.COL_CHANNEL_ID_INDEX_QUERY);
+		//db.execSQL(SubscriptionsTable.COL_CHANNEL_ID_INDEX_QUERY);
 	}
 
 

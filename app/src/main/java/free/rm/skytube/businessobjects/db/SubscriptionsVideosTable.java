@@ -28,6 +28,8 @@ public class SubscriptionsVideosTable {
 	public static final String COL_YOUTUBE_VIDEO_DATE = "YouTube_Video_Date";
 	public static final String COL_RETRIEVAL_TS = "Retrieval_Timestamp";
 	public static final String COL_PUBLISH_TS = "Publish_Timestamp";
+	public static final String COL_CHANNEL_ID_INDEX_QUERY = "CREATE INDEX "+SubscriptionsVideosTable.COL_CHANNEL_ID+" ON " +SubscriptionsVideosTable.TABLE_NAME+"("+SubscriptionsVideosTable.COL_CHANNEL_ID+")";
+
 
 	public static final String COL_YOUTUBE_VIDEO_ID_EQUALS_TO = SubscriptionsVideosTable.COL_YOUTUBE_VIDEO_ID + " = ?";
 

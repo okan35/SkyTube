@@ -42,6 +42,8 @@ public class SubscriptionsTable {
 			SubscriptionsTable.COL_LAST_VISIT_TIME,
 			SubscriptionsTable.COL_LAST_CHECK_TIME};
 
+	public static final String COL_CHANNEL_ID_INDEX_QUERY = "CREATE INDEX "+SubscriptionsTable.COL_CHANNEL_ID+" ON " +SubscriptionsTable.TABLE_NAME+"("+SubscriptionsTable.COL_CHANNEL_ID+")";
+
 	private static final String ADD_COLUMN = "ALTER TABLE " + TABLE_NAME + " ADD COLUMN ";
 
 	public static String getCreateStatement() {
